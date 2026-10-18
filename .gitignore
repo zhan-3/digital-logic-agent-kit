@@ -1,0 +1,8 @@
+build/
+vivado/
+*.vcd
+*.wdb
+*.out
+*.bit
+*.xpr
+*.log

@@ -1,0 +1,6 @@
+// Rename this file and module for your own task.
+module module_name (
+    // TODO: define ports and widths from your course specification.
+);
+    // TODO: implement the required behavior yourself.
+endmodule

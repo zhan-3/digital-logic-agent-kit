@@ -1,0 +1,14 @@
+`timescale 1ns/1ps
+
+module tb_module_name;
+    // TODO: declare signals matching your module's real interface.
+    // TODO: instantiate the DUT using named port connections.
+
+    initial begin
+        $dumpfile("tb_module_name.vcd");
+        $dumpvars(0, tb_module_name);
+        // TODO: set inputs, wait for outputs, compare with an independent expected value.
+        // Use $fatal(1, ...) when a check fails.
+        $finish;
+    end
+endmodule
