@@ -1,0 +1,20 @@
+// Eight physically separate 8-bit register instances are required.
+// Confirm reset/enable polarity and port names against your course starter.
+module reg8file (
+    input  wire       clk, clr, en,
+    input  wire [7:0] d,
+    input  wire [2:0] wsel, rsel,
+    output wire [7:0] q
+);
+    wire [7:0] write_en;
+    wire [7:0] r0, r1, r2, r3, r4, r5, r6, r7;
+    // TODO: translate en/wsel into exactly one active write_en bit.
+    assign write_en = TODO_WRITE_DECODER;
+
+    // Example connection only. Design dff8 first, then add instances 1–7.
+    dff8 u0 (.clk(clk), .clr(clr), .en(write_en[0]), .d(d), .q(r0));
+    TODO_SEVEN_MORE_INSTANCES
+
+    // TODO: select the register indexed by rsel without changing state.
+    assign q = TODO_READ_MUX;
+endmodule

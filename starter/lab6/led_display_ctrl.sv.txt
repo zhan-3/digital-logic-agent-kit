@@ -1,0 +1,22 @@
+// Replace the placeholder with YOUR OWN student-ID suffix before running.
+// This file intentionally has missing logic. Confirm pin/polarity on your EGO2.
+module led_display_ctrl #(
+    parameter logic [31:0] INITIAL_BCD = TODO_YOUR_8_BCD_DIGITS,
+    parameter integer DEBOUNCE_CYCLES = 1_000_000, // 10 ms @ 100 MHz
+    parameter integer SCAN_CYCLES = 200_000        // 2 ms/digit @ 100 MHz
+) (
+    input  logic clk, reset,
+    input  logic increment_button, decrement_button,
+    output logic [7:0] digit_en, seg0, seg1
+);
+    logic [31:0] bcd_value;
+    logic inc_pulse, dec_pulse;
+    logic [2:0] scan_index;
+    logic [3:0] selected_digit;
+
+    // TODO: synchronize/debounce both buttons, then make one-cycle pulses.
+    // TODO: implement decimal digit carry/borrow and simultaneous-press rule.
+    // TODO: scan exactly one of eight digits and map selected BCD to segments.
+    // TODO: check active level and which four digits use seg0 vs seg1.
+    TODO_DISPLAY_SUBMODULES_AND_WIRING
+endmodule

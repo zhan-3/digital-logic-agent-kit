@@ -1,28 +1,24 @@
-# 数字逻辑实验 Agent 工作包
+# 数字逻辑实验：课程任务摘要 + Agent 半成品起点
 
-**目标：复用做实验的方法，不复用某个人的答案。** 这里提供 Agent 指令、Lab 1–6 的设计检查点、可运行的工具入口和空模板；不含个人 RTL、Testbench、报告、学号、OJ 证据或课程网站镜像。
+这个仓库面向也使用 Agent 的同学：**复用任务拆解、接口起点和验证路线，而不是共享同一份可提交的答案**。没有个人报告、完整 RTL、学号、OJ 证据或课程镜像文件。
 
-## 3 分钟开始
+## 怎么用（按顺序）
 
-1. 把 [`PROMPT.md`](PROMPT.md) 完整发给你的 Agent；附上你自己有权访问的实验要求、EGO2 板卡/XDC 资料和当前项目目录。
-2. 让 Agent 先按 [`DESIGN-PLAYBOOK.md`](DESIGN-PLAYBOOK.md) **核对任务版本和接口**，输出验收清单，不要立即贴代码。
-3. 一次只做一个模块：规格/真值表 → RTL → 自检 Testbench → 运行 → Vivado（适用时）→ 人工上板 → 报告。每一步失败先定位再继续。
-4. 完成项按 [`CHECKLIST.md`](CHECKLIST.md) 打钩；没有真实波形/板上现象就保持待验证。
+1. 阅读 [`TASKS.md`](TASKS.md)：按校内课程站镜像整理 Lab 1–6 的主要任务、验收物及原文之间的冲突；每项都标出校内页面路径。**当次老师要求和本人可访问的原始页面优先。**
+2. 把 [`PROMPT.md`](PROMPT.md) 发给自己的 Agent，附上自己的课程页面、板卡/XDC 与工作目录。
+3. Agent 按 [`DESIGN-PLAYBOOK.md`](DESIGN-PLAYBOOK.md) 核对接口、边界与测试场景，挑选 [`starter/`](starter/README.md) 中的一份 `.sv.txt` 半成品起点；一次只做一个模块。
+4. 补齐 `TODO_*`、写自己的自检 Testbench，按 [`CHECKLIST.md`](CHECKLIST.md) 逐项验证；实板与报告证据只能来自本人实际操作。
 
-## Agent 该调用什么
+## 工具怎么选
 
-| 环节 | 首选工具/操作 | 通过标志 |
+| 场景 | 工具 | 要保留的结果 |
 |---|---|---|
-| 查要求 | 读取本人课程页面、下载的 XDC/模板；有登录态时优先授权 Chrome CDP | 列出来源、冲突、端口表 |
-| 阅读/修改工程 | Agent 的文件读取、精确编辑、命令执行工具；先 `git status` | 改动可审阅，不覆盖原始 starter |
-| 快速自检 | Icarus `iverilog -g2012` + `vvp`；可用 `scripts/run-iverilog.ps1` | 自检程序非零退出即失败 |
-| 正式仿真 | Vivado `xvlog` → `xelab` → `xsim`，或 GUI；可用 `scripts/run-vivado-sim.ps1` | 实际 XSim 日志和 WDB |
-| 综合/实现 | Vivado GUI 或 `scripts/run-vivado-flow.ps1` | RTL/Synthesis、DRC、时序、Bitstream 分别核对 |
-| 波形/原理图 | Vivado GUI；Lab 1–2 可用 GTKWave | 真实导出，信号名和时刻可读 |
-| 上板 | 本人使用 Vivado Hardware Manager 操作 EGO2 | 人工记录输入与实际输出 |
-| 报告 | 本人的代码、日志、波形和实物现象 | 未做的项明确标待验证 |
+| Lab 1–2 快速仿真 | `iverilog -g2012` + `vvp`、GTKWave | 自检日志与 VCD 波形 |
+| Lab 3–6 快速自检 | 同上（仅辅检） | 自检日志 |
+| Lab 3–6 正式流程 | Vivado XSim/GUI、RTL Analysis、Synthesis、Implementation | 原生 WDB、真实 schematic、DRC/时序及 Bitstream |
+| EGO2 上板 | 本人操作 Hardware Manager | 本人记录的按键、开关和实际显示 |
 
-上表是工具顺序，不代表全部工具已经安装。Windows PowerShell 示例（按自己的文件名替换）：
+通用脚本位于 `scripts/`；示例（先替换为自己的**已完成**源文件、顶层名、器件和 Vivado 路径）：
 
 ```powershell
 .\scripts\run-iverilog.ps1 -Top tb_example -Files src\example.sv,sim\tb_example.sv
@@ -30,6 +26,4 @@
 .\scripts\run-vivado-flow.ps1 -Top example -Sources src\example.sv -Constraints constr\example.xdc -VivadoBin 'C:\Xilinx\Vivado\2023.2\bin' -Part '请填本人板卡器件型号'
 ```
 
-也可以在 Vivado GUI 创建工程、添加 RTL/仿真源/XDC，然后依次 **Run Simulation → Open Elaborated Design → Run Synthesis → Run Implementation → Generate Bitstream**。脚本输出不等于 GUI 截图，更不等于实物验收。
-
-模板文件为 `.txt`，需按自己的任务填写接口和逻辑后再改名。课程版本、器件、引脚和有效电平以你手上的指导书及实板为准，不以本工作包替代课程要求。
+模板里保留的 `TODO_*` 故意无法编译，防止误把半成品当作已验证结果。课程站点是校内地址，本仓库不提供站点镜像或登录方式。

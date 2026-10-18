@@ -1,0 +1,9 @@
+// TASK: implement this interface in four separate files using assign, ?:, if, case.
+// Replace the TODO token with your own implementation; match course starter ports first.
+module mux8_starter (
+    input  wire [7:0] data,
+    input  wire [2:0] select,
+    output wire       y
+);
+    assign y = TODO_MUX8_EXPRESSION;
+endmodule

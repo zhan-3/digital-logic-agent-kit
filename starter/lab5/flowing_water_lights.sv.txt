@@ -1,0 +1,20 @@
+// Count values depend on CLK_HZ; use a parameter override for fast simulation.
+// Align reset, button, switch and LED polarity with your board/XDC.
+module flowing_water_lights #(
+    parameter integer CLK_HZ = 100_000_000
+) (
+    input  logic       clk, reset, start_stop,
+    input  logic [1:0] interval,
+    output logic [7:0] led
+);
+    localparam integer T_001 = CLK_HZ / 100;
+    localparam integer T_01  = CLK_HZ / 10;
+    localparam integer T_025 = CLK_HZ / 4;
+    localparam integer T_1   = CLK_HZ;
+
+    logic running;
+    // TODO: synchronize button, detect a single press, choose count limit;
+    // TODO: use a one-cycle enable for LED movement (not a generated clock);
+    // TODO: reset to LED1 only; implement pause and circular left shift.
+    TODO_FLOWING_LIGHTS_STATE_MACHINE
+endmodule

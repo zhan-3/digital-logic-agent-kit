@@ -1,0 +1,21 @@
+// Interface adapted to course starter; verify current task version before coding.
+// Operation inputs are active-low: one of five is 0, the others are 1.
+module alu (
+    input  logic [7:0] a, b,
+    input  logic add_op, sub_op, and_op, or_op, shl_op,
+    output logic [7:0] result,
+    output logic carry_out, zero
+);
+    logic [8:0] extended_value; // for operations requiring a ninth bit
+
+    always_comb begin
+        result = '0;
+        carry_out = 1'b0;
+        extended_value = '0;
+        // TODO: implement five mutually exclusive operations and the
+        // unspecified/multiple-operation behavior from your task version.
+        // For subtraction, decide the required meaning of carry_out.
+        TODO_ALU_CASES
+        zero = (result == 8'b0);
+    end
+endmodule
