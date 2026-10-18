@@ -1,0 +1,10 @@
+// Course lab3/s3 truth table calls this a 4-bit multiplexer, but selects
+// addition/subtraction results, not simply input_a vs input_b.
+module multiplexer (
+    input  wire       enable, select,
+    input  wire [3:0] input_a, input_b,
+    output wire [3:0] led
+);
+    // TODO: implement all truth-table rows, including enable=0 -> 4'b1111.
+    assign led = TODO_SELECT_4_BIT_ADD_SUB_RESULT;
+endmodule
