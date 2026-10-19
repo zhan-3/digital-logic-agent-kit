@@ -1,29 +1,60 @@
-# 数字逻辑实验：课程任务摘要 + Agent 半成品起点
+# Digital Logic Agent Kit
 
-这个仓库面向也使用 Agent 的同学：**复用任务拆解、接口起点和验证路线，而不是共享同一份可提交的答案**。没有个人报告、完整 RTL、学号、OJ 证据或课程镜像文件。
+面向数字逻辑课程的 Agent 工程包：提供校内课程站轻量镜像、任务摘要、EGO2/Vivado 操作手册、OJ/报告网页安全工作流、通用脚本和带 TODO 的半成品接口。目标是让使用者快速建立**自己的**可复现工程，而不是共享个人报告或完整可提交答案。
 
-## 怎么用（按顺序）
+## 五分钟开始
 
-1. 阅读 [`TASKS.md`](TASKS.md)：按校内课程站镜像整理 Lab 1–6 的主要任务、验收物及原文之间的冲突；每项都标出校内页面路径。**当次老师要求和本人可访问的原始页面优先。**
-2. 把 [`PROMPT.md`](PROMPT.md) 发给自己的 Agent，附上自己的课程页面、板卡/XDC 与工作目录。
-3. Agent 按 [`DESIGN-PLAYBOOK.md`](DESIGN-PLAYBOOK.md) 核对接口、边界与测试场景，挑选 [`starter/`](starter/README.md) 中的一份 `.sv.txt` 半成品起点；一次只做一个模块。
-4. 补齐 `TODO_*`、写自己的自检 Testbench，按 [`CHECKLIST.md`](CHECKLIST.md) 逐项验证；实板与报告证据只能来自本人实际操作。
+1. 阅读 [`AGENTS.md`](AGENTS.md)，让 Agent 按证据门推进。
+2. 用 [`TASKS.md`](TASKS.md) 找到实验任务；需要原文时打开 [`course-site-mirror/10.245.130.67/digital/index.html`](course-site-mirror/10.245.130.67/digital/index.html)。
+3. 把 [`PROMPT.md`](PROMPT.md) 交给 Agent，并提供自己的课程版本、板卡/XDC、个人数据和工作目录。
+4. 从 [`starter/`](starter/README.md) 复制对应未完成接口，按 [`DESIGN-PLAYBOOK.md`](DESIGN-PLAYBOOK.md) 实现。
+5. 用 [`CHECKLIST.md`](CHECKLIST.md) 核对真实证据。
 
-## 工具怎么选
+## 文档导航
 
-| 场景 | 工具 | 要保留的结果 |
-|---|---|---|
-| Lab 1–2 快速仿真 | `iverilog -g2012` + `vvp`、GTKWave | 自检日志与 VCD 波形 |
-| Lab 3–6 快速自检 | 同上（仅辅检） | 自检日志 |
-| Lab 3–6 正式流程 | Vivado XSim/GUI、RTL Analysis、Synthesis、Implementation | 原生 WDB、真实 schematic、DRC/时序及 Bitstream |
-| EGO2 上板 | 本人操作 Hardware Manager | 本人记录的按键、开关和实际显示 |
+| 任务 | 文档 |
+|---|---|
+| 课程站、OJ、报告系统入口与镜像边界 | [`docs/COURSE-ACCESS.md`](docs/COURSE-ACCESS.md) |
+| 推荐工程目录和状态模型 | [`docs/WORKSPACE-LAYOUT.md`](docs/WORKSPACE-LAYOUT.md) |
+| 从零创建并完成 Vivado 工程 | [`docs/VIVADO-RUNBOOK.md`](docs/VIVADO-RUNBOOK.md) |
+| EGO2 7A50T 时钟、开关、按键、LED 引脚 | [`docs/EGO2-7A50T.md`](docs/EGO2-7A50T.md) |
+| OJ 一次性提交与结果未知处理 | [`docs/OJ-RUNBOOK.md`](docs/OJ-RUNBOOK.md) |
+| Browser Use/CDP 整理并核对报告 | [`docs/WEB-REPORT-RUNBOOK.md`](docs/WEB-REPORT-RUNBOOK.md) |
+| 本次端到端实践提炼出的约束 | [`docs/LESSONS.md`](docs/LESSONS.md) |
+| 六次实验任务与已知冲突 | [`TASKS.md`](TASKS.md) |
 
-通用脚本位于 `scripts/`；示例（先替换为自己的**已完成**源文件、顶层名、器件和 Vivado 路径）：
+## 脚本
 
 ```powershell
+# Icarus 快速自检
 .\scripts\run-iverilog.ps1 -Top tb_example -Files src\example.sv,sim\tb_example.sv
-.\scripts\run-vivado-sim.ps1 -Top tb_example -Files src\example.sv,sim\tb_example.sv -VivadoBin 'C:\Xilinx\Vivado\2023.2\bin'
-.\scripts\run-vivado-flow.ps1 -Top example -Sources src\example.sv -Constraints constr\example.xdc -VivadoBin 'C:\Xilinx\Vivado\2023.2\bin' -Part '请填本人板卡器件型号'
+
+# Vivado 原生仿真
+.\scripts\run-vivado-sim.ps1 -Top tb_example `
+  -Files src\example.sv,sim\tb_example.sv `
+  -VivadoBin 'C:\Xilinx\Vivado\2023.2\bin'
+
+# 创建可打开的 Vivado 工程
+.\scripts\create-vivado-project.ps1 -Name example -Top example `
+  -Sources src\example.sv -SimTop tb_example -SimFiles sim\tb_example.sv `
+  -Constraints constr\example.xdc -ProjectDir vivado\example `
+  -VivadoBin 'C:\Xilinx\Vivado\2023.2\bin'
+
+# 综合、实现、报告和 Bitstream
+.\scripts\run-vivado-flow.ps1 -Top example -Sources src\example.sv `
+  -Constraints constr\example.xdc -Part xc7a50tcsg324-1 `
+  -VivadoBin 'C:\Xilinx\Vivado\2023.2\bin'
+
+# 导出 RTL/Synthesis schematic SVG
+.\scripts\export-vivado-schematics.ps1 -Top example -Sources src\example.sv `
+  -OutputDir evidence -VivadoBin 'C:\Xilinx\Vivado\2023.2\bin'
+
+# 本地浏览课程镜像
+.\scripts\serve-course-mirror.ps1
 ```
 
-模板里保留的 `TODO_*` 故意无法编译，防止误把半成品当作已验证结果。课程站点是校内地址，本仓库不提供站点镜像或登录方式。
+脚本生成成功不等于实板通过。使用者仍需在 Vivado GUI 中取得课程要求的波形/原理图，并亲自确认硬件现象。
+
+## 内容边界
+
+仓库不包含个人学号、个人报告、个人 OJ 截图/提交记录、登录信息、Cookie/HAR 或个人完整答案。课程镜像排除了超过 GitHub 100 MB 上限的 MP4、第三方 ZIP 与抓取日志；它是时间点快照，当前老师要求和原站始终优先。

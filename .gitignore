@@ -1,8 +1,13 @@
-build/
-vivado/
+/build/
+/vivado/
 *.vcd
 *.wdb
 *.out
 *.bit
 *.xpr
 *.log
+
+# Course mirror files intentionally excluded from GitHub
+course-site-mirror/**/*.mp4
+course-site-mirror/**/*.zip
+course-site-mirror/**/wget-log*

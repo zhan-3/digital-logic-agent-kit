@@ -1,0 +1,2431 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数字电子技术实验教程（SystemVerilog + Vivado + EGO2）">
+      
+      
+      
+      
+        <link rel="prev" href="../../lab0/verilator仿真/index.html">
+      
+      
+        <link rel="next" href="../s2/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>System Verilog 基础入门1 - 数字电子技术实验</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="index.html#system-verilog-基础入门-1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="数字电子技术实验" class="md-header__button md-logo" aria-label="数字电子技术实验" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m16 48v160h160V176z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数字电子技术实验
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System Verilog 基础入门1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数字电子技术实验" class="md-nav__button md-logo" aria-label="数字电子技术实验" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m16 48v160h160V176z"/></svg>
+
+    </a>
+    数字电子技术实验
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/EGO2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EGO2介绍与注意事项
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/vivado_intro_download/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vivado下载与安装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vivado开发流程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vivado开发流程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s1-create-project/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    建立工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s3-add-rtl/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    添加设计文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s5-add-testbench/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    添加仿真文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s6-simulation/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进行仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s8-add-constraints/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    添加约束文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s9-synth-impl-bit/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    综合、实现和上板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/unconnected/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发板连接失败排查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/仿真调试/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真调试常用功能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验总体介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验准备
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验准备
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab0/verilator仿真/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verilator 仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验1 HDL基础与Verilator仿真入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验1 HDL基础与Verilator仿真入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 基础入门1
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 基础入门1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="index.html#system-verilog-基础入门-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Verilog 基础入门 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Verilog 基础入门 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#1-system-verilog-基本结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 System Verilog 基本结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 System Verilog 基本结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#11-端口定义--指明模块的输入输出端口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 端口定义 : 指明模块的输入输出端口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#12-io说明-指明端口类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 I/O说明 ：指明端口类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#13-信号类型声明声明描述所需要的中间信号连线或者寄存器类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 信号类型声明：声明描述所需要的中间信号，连线或者寄存器类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#14-逻辑功能描述" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 逻辑功能描述：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#2-systemverilog-语法规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 SystemVerilog 语法规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#3-assign-持续赋值语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 assign 持续赋值语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#任务-1完成-wire4sv-代码并完成仿真验证" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务 1：完成 wire4.sv 代码并完成仿真验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务 1：完成 wire4.sv 代码并完成仿真验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#1-任务要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 任务要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#2-下载测试代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 下载测试代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#3-实验步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 实验步骤
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 实验步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#第一步完成代码编写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：完成代码编写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第二步编译源码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：编译源码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第三步运行仿真" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：运行仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第四步生成波形文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：生成波形文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第五步用-gtkwave-打开波形" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五步：用 GTKWave 打开波形
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 基础入门2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验2 层次结构与多路选择器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验2 层次结构与多路选择器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab2/s1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 语句
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab2/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System verilog 基础实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab2/s3/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多路选择器和层次化设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验3 译码器与运算器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验3 译码器与运算器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/s3/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/hw/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课后作业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/s6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3-8译码器仿真分析示例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验4 时序逻辑与D触发器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验4 时序逻辑与D触发器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/s6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/lab2-hw/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课后作业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验5 流水灯与时序电路
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验5 流水灯与时序电路
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/lab3-hw/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课后作业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验6 数码管控制器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验6 数码管控制器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab6/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab6/s3/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/实验报告模板/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验报告模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nscscc/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    龙芯杯比赛
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="index.html#system-verilog-基础入门-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Verilog 基础入门 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Verilog 基础入门 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#1-system-verilog-基本结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 System Verilog 基本结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 System Verilog 基本结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#11-端口定义--指明模块的输入输出端口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 端口定义 : 指明模块的输入输出端口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#12-io说明-指明端口类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 I/O说明 ：指明端口类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#13-信号类型声明声明描述所需要的中间信号连线或者寄存器类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 信号类型声明：声明描述所需要的中间信号，连线或者寄存器类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#14-逻辑功能描述" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 逻辑功能描述：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#2-systemverilog-语法规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 SystemVerilog 语法规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#3-assign-持续赋值语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 assign 持续赋值语句
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#任务-1完成-wire4sv-代码并完成仿真验证" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务 1：完成 wire4.sv 代码并完成仿真验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务 1：完成 wire4.sv 代码并完成仿真验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#1-任务要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 任务要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#2-下载测试代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 下载测试代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#3-实验步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 实验步骤
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 实验步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#第一步完成代码编写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：完成代码编写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第二步编译源码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：编译源码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第三步运行仿真" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：运行仿真
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第四步生成波形文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四步：生成波形文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第五步用-gtkwave-打开波形" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五步：用 GTKWave 打开波形
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>System Verilog 基础入门1</h1>
+
+<h2 id="system-verilog-基础入门-1">System Verilog 基础入门 1<a class="headerlink" href="index.html#system-verilog-基础入门-1" title="Permanent link">&para;</a></h2>
+<p>硬件描述语言（HDL），是一种用于描述电子系统（尤其是数字电路）结构、行为和功能的专用编程语言。
+System Verilog 是一种强大的硬件描述和验证语言，广泛用于芯片设计、验证以及 FPGA 实现。它在 Verilog 的基础上扩展了许多高级特性，包括面向对象编程、随机化、断言等。</p>
+<p>system verilog 讲解视频-1:</p>
+<video controls src="../code/verilog-1.mp4" title="System Verilog 基础入门 1"></video>
+
+<h3 id="1-system-verilog-基本结构">1 System Verilog 基本结构<a class="headerlink" href="index.html#1-system-verilog-基本结构" title="Permanent link">&para;</a></h3>
+<p>System Verilog 模板如下所示：</p>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="o">&lt;</span><span class="err">顶层模块名</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="p">(</span><span class="o">&lt;</span><span class="err">输入输出端口列表</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="k">output</span><span class="w"> </span><span class="err">输出端口列表</span><span class="p">;</span><span class="w"> </span><span class="c1">//输出端口声明</span>
+<span class="k">input</span><span class="w"> </span><span class="err">输入端口列表</span><span class="p">;</span><span class="w"> </span><span class="c1">//输入端口声明</span>
+
+<span class="cm">/*定义数据，信号的类型，函数声明*/</span>
+<span class="kt">reg</span><span class="w"> </span><span class="err">信号名；</span><span class="kt">wire</span><span class="w"> </span><span class="err">信号名；</span>
+
+<span class="c1">//逻辑功能定义</span>
+<span class="k">assign</span><span class="w"> </span><span class="o">&lt;</span><span class="err">结果信号名</span><span class="o">&gt;=&lt;</span><span class="err">表达式</span><span class="o">&gt;</span><span class="p">;</span><span class="w"> </span><span class="c1">//使用assign语句定义逻辑功能，语句结束加分号";"</span>
+
+<span class="c1">//用always块描述逻辑功能</span>
+<span class="k">always</span><span class="w"> </span><span class="p">@</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="err">敏感信号表达式</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">begin</span>
+<span class="w">       </span><span class="c1">//过程赋值</span>
+<span class="w">        </span><span class="c1">//if-else，case语句</span>
+<span class="w">        </span><span class="c1">//while，repeat，for循环语句</span>
+<span class="w">        </span><span class="c1">//task，function调用</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="c1">//调用其他模块</span>
+<span class="o">&lt;</span><span class="err">调用模块名</span><span class="n">module_name</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="err">例化模块名</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">端口列表</span><span class="n">port_list</span><span class="w"> </span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="c1">//门元件例化</span>
+<span class="err">门元件关键字</span><span class="w"> </span><span class="o">&lt;</span><span class="err">例化门元件名</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="err">端口列表</span><span class="n">port_list</span><span class="o">&gt;</span><span class="p">);</span>
+
+<span class="k">endmodule</span>
+</code></pre></div>
+<p>一个简单的设计示例：</p>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">block1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">logic</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">c</span><span class="w"> </span><span class="p">);</span>
+<span class="k">endmodule</span>
+</code></pre></div>
+<p>Verilog的基本设计单元是“模块 (block) ” , 如示例的这个模块block1。在设计时尽量一个module对应一个设计文件。</p>
+<p>system verilog文件的后缀名为.sv， verilog文件的后缀名为.v</p>
+<p>Verilog 模块的结构由在module和endmodule关键词之间的4个主要部分组成：</p>
+<h4 id="11-端口定义--指明模块的输入输出端口">1.1 端口定义 : 指明模块的输入输出端口<a class="headerlink" href="index.html#11-端口定义--指明模块的输入输出端口" title="Permanent link">&para;</a></h4>
+<p>示例中module block1(a,b,c,d )； 括号内的端口定义说明模块block1共有4个端口：a,b,c,d</p>
+<h4 id="12-io说明-指明端口类型">1.2 I/O说明 ：指明端口类型<a class="headerlink" href="index.html#12-io说明-指明端口类型" title="Permanent link">&para;</a></h4>
+<p>端口定义需要指明四个要素{方向，类型，位宽，名字}，格式如下。</p>
+<div class="highlight"><pre><span></span><code><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="err">类型</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="err">位宽</span><span class="p">]</span><span class="w"> </span><span class="err">端口名</span><span class="mh">1</span><span class="p">,</span><span class="w"> </span><span class="err">端口名</span><span class="mh">2</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">;</span>
+<span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="err">类型</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="err">位宽</span><span class="p">]</span><span class="w"> </span><span class="err">端口名</span><span class="mh">1</span><span class="p">,</span><span class="w"> </span><span class="err">端口名</span><span class="mh">2</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">;</span>
+<span class="k">inout</span><span class="w"> </span><span class="p">[</span><span class="err">类型</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="err">位宽</span><span class="p">]</span><span class="w"> </span><span class="err">端口名</span><span class="mh">1</span><span class="p">,</span><span class="w"> </span><span class="err">端口名</span><span class="mh">2</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">;</span>
+</code></pre></div>
+<p>这里input表示输入端口，output表示输出端口，inout表示双向端口。其中类型和位宽可以缺省。信号类型见3信号类型说明。</p>
+<p>对应示例代码的部分</p>
+<div class="highlight"><pre><span></span><code><span class="k">input</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span><span class="w">  </span><span class="c1">//端口a,b,c为输入端口</span>
+<span class="k">output</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w">     </span><span class="c1">//端口d为输出端口</span>
+</code></pre></div>
+<p>更普遍也是更推荐的写法是把端口定义和IO说明合在一起，上面示例可以下面更简洁的形式，注意端口列表里面用“,”分隔</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">block1</span><span class="p">(</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">d</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//...</span>
+<span class="k">endmodule</span>
+</code></pre></div>
+[位宽] 可以指定信号位宽，缺省默认位宽为1。例如 logic [3:0] ans; 声明了一个 logic 类型、位宽为 4 的向量信号 ans。</p>
+<p>在表达式中，我们可任意选择向量中的一位或相邻几位，分别称为位选择（bit-select）和域选择（part-select），例如：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">my_vec</span><span class="p">;</span><span class="w">      </span><span class="c1">// 一个位宽为 5 的向量</span>
+
+<span class="c1">// 假定 my_vec 此时的值是 5'b01011</span>
+
+<span class="n">my_vec</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w">       </span><span class="c1">// 表示最低位，值为 1'b1</span>
+<span class="n">my_vec</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">2</span><span class="p">]</span><span class="w">     </span><span class="c1">// 表示第四、三位，值为 2'b10</span>
+<span class="n">my_vec</span><span class="p">[</span><span class="mh">4</span><span class="p">]</span><span class="w">       </span><span class="c1">// 表示最高位，值为 1'b0</span>
+</code></pre></div>
+<h4 id="13-信号类型声明声明描述所需要的中间信号连线或者寄存器类型">1.3 信号类型声明：声明描述所需要的中间信号，连线或者寄存器类型<a class="headerlink" href="index.html#13-信号类型声明声明描述所需要的中间信号连线或者寄存器类型" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kt">logic</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">//这里声明了x信号</span>
+</code></pre></div>
+<p>verilog 里连线类型对应wire， 寄存器类型对应 reg。 System Verilog 统一使用logic类型，通过功能描述来区分两种信号。</p>
+<h4 id="14-逻辑功能描述">1.4 逻辑功能描述：<a class="headerlink" href="index.html#14-逻辑功能描述" title="Permanent link">&para;</a></h4>
+<p>逻辑功能的定义是一个模块中最核心的部分，明确了模块的行为和数据的流动。</p>
+<ul>
+<li>
+<p>在HDL中，定义模块的逻辑功能主要有两种建模（描述）风格。</p>
+</li>
+<li>
+<p>行为建模：描述输入和输出之间的因果关系。 </p>
+<ul>
+<li>
+<p>基于持续赋值语句（assign）的建模，只能用于描述组合逻辑电路。 </p>
+</li>
+<li>
+<p>基于过程块（always块）的建模，既可描述组合逻辑，也可描述时序逻辑，抽象层次更高，可使用大量高级语言语法结构，例如if..else，for等。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>结构化建模：调用其它已定义过的模块对整个电路的功能进行描述。</p>
+</li>
+</ul>
+<p>本示例中采用的通过assign 持续赋值语句的行为建模方式。</p>
+<div class="highlight"><pre><span></span><code><span class="k">assign</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// d的逻辑为 信号a 与x的逻辑或；</span>
+<span class="k">assign</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">c</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">//x的逻辑是 信号b 与取反后的c信号 逻辑与；</span>
+</code></pre></div>
+<p>这段代码综合后的电路：</p>
+<p><img alt="综合后电路" src="../../images/e1.svg" /></p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>在使用硬件描述语言（HDL）时，要思考HDL应该产生的硬件，然后编写合适的语法来设计相应硬件。</p>
+<p>小心不要把HDL当作软件来对待，不可以在不考虑硬件的情况下进行编码。</p>
+</div>
+<h3 id="2-systemverilog-语法规则">2 SystemVerilog 语法规则<a class="headerlink" href="index.html#2-systemverilog-语法规则" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>SystemVerilog 大小写敏感</p>
+<p>示例: reset 和 Reset 是不同的信号.</p>
+</li>
+<li>
+<p>SystemVerilog 命名不能以数字做起始字符</p>
+<p>示例: 2mux 非法命名</p>
+</li>
+<li>
+<p>SystemVerilog 忽略空格、“_” 字符</p>
+</li>
+<li>
+<p>注释： 与C语言注释相同</p>
+<p>// 单行注释
+/<em> 多行
+   注释 </em>/</p>
+</li>
+</ul>
+<h3 id="3-assign-持续赋值语句">3 assign 持续赋值语句<a class="headerlink" href="index.html#3-assign-持续赋值语句" title="Permanent link">&para;</a></h3>
+<ul>
+<li>基于持续赋值语句的建模是指根据信号之间的逻辑关系，采用持续赋值语句（关键词assign）描述数字逻辑电路的方式，也称为数据流建模。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">assign</span><span class="w"> </span><span class="p">[#</span><span class="err">延迟量</span><span class="p">]</span><span class="w"> </span><span class="err">信号名</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">表达式</span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li>
+<p>持续赋值语句示例如下所示。只要“=”右侧表达式中的任意变量发生变化，该表达式立即重新计算并赋值给左边的变量。</p>
+<p>其中 #延迟量 是不可以综合的，一般在仿真文件中使用。</p>
+</li>
+<li>
+<p>基于持续赋值语句的建模只能用来描述组合逻辑电路。</p>
+</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">实验任务 1</p>
+<p>采用持续赋值语句 <code>assign</code> 完成如下图所示的输入端口和输出端口之间的连接。</p>
+</div>
+<p><img alt="4wire" src="../../images/4线.png" /></p>
+<h3 id="任务-1完成-wire4sv-代码并完成仿真验证">任务 1：完成 wire4.sv 代码并完成仿真验证<a class="headerlink" href="index.html#任务-1完成-wire4sv-代码并完成仿真验证" title="Permanent link">&para;</a></h3>
+<p>本任务的目标是：根据图示完成 <code>wire4</code> 模块的端口连接，并通过 Icarus Verilog 进行功能仿真验证，最终用 GTKWave 查看时序波形。</p>
+<h4 id="1-任务要求">1. 任务要求<a class="headerlink" href="index.html#1-任务要求" title="Permanent link">&para;</a></h4>
+<p>按图示编写模块 <code>wire4.sv</code>。模块框架代码如下</p>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">wire4</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span>
+<span class="p">);</span>
+<span class="w">    </span><span class="c1">// 请根据实验要求完成端口功能连接</span>
+<span class="k">endmodule</span>
+</code></pre></div>
+<h4 id="2-下载测试代码">2. 下载测试代码<a class="headerlink" href="index.html#2-下载测试代码" title="Permanent link">&para;</a></h4>
+<p>测试文件已准备好，可直接下载：</p>
+<ul>
+<li><a href="../code/wire4.sv">wire4.sv</a></li>
+<li><a href="../code/tb_wire4.sv">tb_wire4.sv</a></li>
+</ul>
+<h4 id="3-实验步骤">3. 实验步骤<a class="headerlink" href="index.html#3-实验步骤" title="Permanent link">&para;</a></h4>
+<p>本实验需要环境：windows + vscode + iverilog + gtkwave；</p>
+<ul>
+<li>vscode ：https://code.visualstudio.com/download</li>
+</ul>
+<p>使用方法及相关插件可以参考中科大教程：https://soc.ustc.edu.cn/Digital/2025/lab1/verilog_coding/</p>
+<p>-<a href="https://bleyer.org/icarus/">iverilog网址</a> </p>
+<p>安装时记得勾选gtkwave，安装完成后如果没有添加环境变量选项，需要手动将 iverilog 和 iverilog\bin 添加到windows PATH变量。
+<img alt="变量" src="../../images/iverilog环境变量.png" /></p>
+<h5 id="第一步完成代码编写">第一步：完成代码编写<a class="headerlink" href="index.html#第一步完成代码编写" title="Permanent link">&para;</a></h5>
+<p>推荐使用vscode软件，完成代码编写。</p>
+<h5 id="第二步编译源码">第二步：编译源码<a class="headerlink" href="index.html#第二步编译源码" title="Permanent link">&para;</a></h5>
+<p>打开代码所在目录：</p>
+<p>右键选择“在终端中打开”</p>
+<p>执行 Icarus Verilog 编译命令：</p>
+<div class="highlight"><pre><span></span><code>iverilog -g2012 -s tb_wire4 -o tb_wire4.out wire4.sv tb_wire4.sv
+</code></pre></div>
+<p>参数说明：</p>
+<ul>
+<li><code>-g2012</code>：启用 SystemVerilog 语法支持</li>
+<li><code>-s tb_wire4</code>：指定测试模块为 <code>tb_wire4</code></li>
+<li><code>-o tb_wire4.out</code>：生成仿真输出文件</li>
+<li><code>wire4.sv tb_wire4.sv</code>：待编译的设计文件和测试文件</li>
+</ul>
+<h5 id="第三步运行仿真">第三步：运行仿真<a class="headerlink" href="index.html#第三步运行仿真" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>vvp tb_wire4.out
+</code></pre></div>
+<p>运行后，终端会输出类似下面的信息：</p>
+<div class="highlight"><pre><span></span><code>a b c | w x y z
+0 0 0 | 0 0 0 0
+1 0 0 | 1 0 0 0
+0 1 0 | 0 1 1 0
+0 0 1 | 0 0 0 1
+</code></pre></div>
+<p>这说明输入与输出关系符合要求.</p>
+<h5 id="第四步生成波形文件">第四步：生成波形文件<a class="headerlink" href="index.html#第四步生成波形文件" title="Permanent link">&para;</a></h5>
+<p>测试代码中已经写入了波形输出语句：</p>
+<div class="highlight"><pre><span></span><code><span class="n">$dumpfile</span><span class="p">(</span><span class="s">"tb_wire4.vcd"</span><span class="p">);</span>
+<span class="n">$dumpvars</span><span class="p">(</span><span class="mh">0</span><span class="p">,</span><span class="w"> </span><span class="n">tb_wire4</span><span class="p">);</span>
+</code></pre></div>
+<p>因此执行仿真后，会自动生成：</p>
+<div class="highlight"><pre><span></span><code>tb_wire4.vcd
+</code></pre></div>
+<h5 id="第五步用-gtkwave-打开波形">第五步：用 GTKWave 打开波形<a class="headerlink" href="index.html#第五步用-gtkwave-打开波形" title="Permanent link">&para;</a></h5>
+<p>在命令行中执行：</p>
+<div class="highlight"><pre><span></span><code>gtkwave tb_wire4.vcd
+</code></pre></div>
+<p>如果你已经安装了 GTKWave，窗口会打开并显示波形信号。</p>
+<div class="admonition tip">
+<p class="admonition-title">surfer</p>
+<p>更好用的波形查看工具 surfer：下载地址 https://surfer-project.org/</p>
+<p><a href="../code/surfer_win.zip">课程web下载 surfer</a></p>
+<p>为方便使用可以解压缩到 iverilog下面的bin目录，这样就不需要单独设置路径了。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 数字电子技术课程组
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "toc.sticky"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

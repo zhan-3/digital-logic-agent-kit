@@ -1,0 +1,2357 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="数字电子技术实验教程（SystemVerilog + Vivado + EGO2）">
+      
+      
+      
+      
+        <link rel="prev" href="../s1/index.html">
+      
+      
+        <link rel="next" href="../../lab2/s1/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>System Verilog 基础入门2 - 数字电子技术实验</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="index.html#system-verilog-基础入门-2" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="数字电子技术实验" class="md-header__button md-logo" aria-label="数字电子技术实验" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m16 48v160h160V176z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            数字电子技术实验
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System Verilog 基础入门2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="数字电子技术实验" class="md-nav__button md-logo" aria-label="数字电子技术实验" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h40c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24v-40c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40v-56h40c13.3 0 24-10.7 24-24s-10.7-24-24-24h-40c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v40h-56zm-16 104h192c17.7 0 32 14.3 32 32v192c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32m16 48v160h160V176z"/></svg>
+
+    </a>
+    数字电子技术实验
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预备知识
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    预备知识
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/EGO2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EGO2介绍与注意事项
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/vivado_intro_download/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vivado下载与安装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vivado开发流程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vivado开发流程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s1-create-project/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    建立工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s3-add-rtl/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    添加设计文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s5-add-testbench/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    添加仿真文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s6-simulation/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进行仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s8-add-constraints/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    添加约束文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/s9-synth-impl-bit/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    综合、实现和上板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/unconnected/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发板连接失败排查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vivado/仿真调试/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真调试常用功能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验总体介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验准备
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验准备
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab0/verilator仿真/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verilator 仿真
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验1 HDL基础与Verilator仿真入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验1 HDL基础与Verilator仿真入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../s1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 基础入门1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 基础入门2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 基础入门2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="index.html#system-verilog-基础入门-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Verilog 基础入门 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Verilog 基础入门 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#4-语法基础补充" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 语法基础补充
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 语法基础补充">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#41-数值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 数值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#42-运算符" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 运算符
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#任务-2完成-mux_2sv-代码并完成仿真验证" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务 2：完成 mux_2.sv 代码并完成仿真验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务 2：完成 mux_2.sv 代码并完成仿真验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#1-任务要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 任务要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#2-下载测试代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 下载测试代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#3-实验步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 实验步骤
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 实验步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#第一步完成代码编写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：完成代码编写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第二步编译源码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：编译源码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第三步运行仿真查看结果和波形" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：运行仿真查看结果和波形
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#更多的练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        更多的练习
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验2 层次结构与多路选择器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验2 层次结构与多路选择器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab2/s1/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Verilog 语句
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab2/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System verilog 基础实验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab2/s3/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多路选择器和层次化设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验3 译码器与运算器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验3 译码器与运算器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/s3/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/hw/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课后作业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/s6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3-8译码器仿真分析示例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验4 时序逻辑与D触发器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验4 时序逻辑与D触发器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/s6/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/lab2-hw/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课后作业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验5 流水灯与时序电路
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验5 流水灯与时序电路
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/lab3-hw/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    课后作业
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验6 数码管控制器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    实验6 数码管控制器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab6/s2/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验内容
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab6/s3/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    附录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附录说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/实验报告模板/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验报告模板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nscscc/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    龙芯杯比赛
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="index.html#system-verilog-基础入门-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Verilog 基础入门 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Verilog 基础入门 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#4-语法基础补充" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 语法基础补充
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 语法基础补充">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#41-数值" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 数值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#42-运算符" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 运算符
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#任务-2完成-mux_2sv-代码并完成仿真验证" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务 2：完成 mux_2.sv 代码并完成仿真验证
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务 2：完成 mux_2.sv 代码并完成仿真验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#1-任务要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 任务要求
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#2-下载测试代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 下载测试代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#3-实验步骤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 实验步骤
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 实验步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="index.html#第一步完成代码编写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：完成代码编写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第二步编译源码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：编译源码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#第三步运行仿真查看结果和波形" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：运行仿真查看结果和波形
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="index.html#更多的练习" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        更多的练习
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>System Verilog 基础入门2</h1>
+
+<h2 id="system-verilog-基础入门-2">System Verilog 基础入门 2<a class="headerlink" href="index.html#system-verilog-基础入门-2" title="Permanent link">&para;</a></h2>
+<p>system verilog 讲解视频-2:</p>
+<video controls src="../code/verilog-2.mp4" title="System Verilog 基础入门 2"></video>
+<hr />
+<h3 id="4-语法基础补充">4 语法基础补充<a class="headerlink" href="index.html#4-语法基础补充" title="Permanent link">&para;</a></h3>
+<h4 id="41-数值">4.1 数值<a class="headerlink" href="index.html#41-数值" title="Permanent link">&para;</a></h4>
+<p>硬件描述语言的一切都是建立在硬件逻辑之上，因此 Verilog 具有一套独特的、基于电平逻辑的数值系统。Verilog 通常使用下面四种基本数值表示电平逻辑：</p>
+<ul>
+<li>0：表示低电平或 False；</li>
+<li>1：表示高电平或 True；</li>
+<li>x 与 X：表示电平未知。也就是说实际情况可能为高电平，也可能为低电平，甚至二者都不属于；</li>
+<li>z 与 Z：表示高阻态。这种情况常常源于信号没有驱动。</li>
+</ul>
+<p>System verilog 中用于给信号或变量赋值的数字格式为
+<div class="highlight"><pre><span></span><code>    N'Bvalue
+</code></pre></div>
+- N : 数字位数
+- B : 进制</p>
+<p>数值示例</p>
+<table>
+<thead>
+<tr>
+<th>数值</th>
+<th># 位数</th>
+<th>进制</th>
+<th>十进制数值</th>
+<th>存储内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3'b101</td>
+<td>3</td>
+<td>binary</td>
+<td>5</td>
+<td>101</td>
+</tr>
+<tr>
+<td>'b11</td>
+<td>unsized</td>
+<td>binary</td>
+<td>3</td>
+<td>00…0011</td>
+</tr>
+<tr>
+<td>8'b11</td>
+<td>8</td>
+<td>binary</td>
+<td>3</td>
+<td>00000011</td>
+</tr>
+<tr>
+<td>8'b1010_1011</td>
+<td>8</td>
+<td>binary</td>
+<td>171</td>
+<td>10101011</td>
+</tr>
+<tr>
+<td>3'd6</td>
+<td>3</td>
+<td>decimal</td>
+<td>6</td>
+<td>110</td>
+</tr>
+<tr>
+<td>6'o42</td>
+<td>6</td>
+<td>octal</td>
+<td>34</td>
+<td>100010</td>
+</tr>
+<tr>
+<td>8'hAB</td>
+<td>8</td>
+<td>hexadecimal</td>
+<td>171</td>
+<td>10101011</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Unsized</td>
+<td>decimal</td>
+<td>42</td>
+<td>00…0101010</td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">my_vec</span><span class="p">;</span><span class="w">      </span><span class="c1">// 一个位宽为 5 的向量</span>
+
+<span class="k">assign</span><span class="w"> </span><span class="n">my_vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">5</span><span class="mb">'b01011</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="42-运算符">4.2 运算符<a class="headerlink" href="index.html#42-运算符" title="Permanent link">&para;</a></h4>
+<p>表达式由操作符（运算符，Operators）和操作数构成，其作用是根据操作符的意义对操作数进行运算，最终得到相应的结果。Verilog 中的运算符按照功能可以分为以下几类：算数运算符、关系运算符、逻辑运算符、归约运算符、条件运算符、移位运算符、拼接运算符。</p>
+<ul>
+<li>位运算</li>
+</ul>
+<p>~（按位非）</p>
+<p>&amp;（按位与）</p>
+<p>|（按位或）</p>
+<p>^（按位异或）</p>
+<p>~^ 或 ^~（按位同或）</p>
+<p>对 2 个操作数的每 bit 数据进行按位操作。如果 2 个操作数位宽不相等，则用 0 向左扩展补充较短的操作数。按位非是单目运算符，它对操作数的每 bit 数据进行取反操作。例如：</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b0101</span><span class="p">;</span>
+<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b1001</span><span class="p">;</span>
+
+<span class="o">~</span><span class="n">A</span><span class="w">        </span><span class="c1">// 4'b1010</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="w">     </span><span class="c1">// 4'b0001</span>
+<span class="n">A</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B</span><span class="w">     </span><span class="c1">// 4'b1101</span>
+<span class="n">A</span><span class="o">^</span><span class="n">B</span><span class="w">       </span><span class="c1">// 4'b1100</span>
+</code></pre></div>
+<ul>
+<li>逻辑运算符</li>
+</ul>
+<p>&amp;&amp;（逻辑与）</p>
+<p>||（逻辑或）</p>
+<p>!（逻辑非）</p>
+<p>逻辑运算符的计算结果也是一个 1bit 的值，其中 0 表示 False，1 表示 True，x 表示不确定。如果一个操作数不为 0，则在逻辑运算时它等价于逻辑 1；如果一个操作数等于 0，则它运算时等价于逻辑 0。如果它任意一位为 x 或 z，则它等价于 x。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//a = 2'b01 , b = 2'b10</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span>
+<span class="w">    </span><span class="o">!</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span>
+</code></pre></div>
+<ul>
+<li>算数运算符</li>
+</ul>
+<p>算术运算符又称为二进制运算符，共五种，均为双目运算符。为：</p>
+<p>+（加）</p>
+<p>-（减）</p>
+<p>*（乘）</p>
+<p>/（除）</p>
+<p>%（取模）</p>
+<p>例如：a + 3'b101 表示两个数 a 和 3'b101 相加。</p>
+<ul>
+<li>关系运算符</li>
+</ul>
+<p>&gt;（大于）</p>
+<p>&lt;（小于）</p>
+<p>&gt;=（大于等于）</p>
+<p>&lt;=（小于等于）</p>
+<p>==（等于）</p>
+<p>!=（不等）</p>
+<p>===（全等）</p>
+<p>!==（非全等）</p>
+<p>关系运算符的运算结果固定为 0（False）或 1（True），是一个 1bit 的值。如果某一个操作数中有一位为 x 或 z，则前六种关系运算的结果为 x。全等比较则对为 x 或 z 的位也进行比较，只有两个操作数完全一致时，其结果才是 1，否则结果是 0。例如：</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mh">4</span><span class="mb">'b1010</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b101</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
+<span class="p">(</span><span class="mh">4</span><span class="mb">'b101</span><span class="n">z</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b1010</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
+<span class="p">(</span><span class="mh">4</span><span class="mb">'b1010</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b101</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span>
+<span class="p">(</span><span class="mh">4</span><span class="mb">'b101</span><span class="n">z</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b1010</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span>
+<span class="p">(</span><span class="mh">4</span><span class="mb">'b101</span><span class="n">z</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b101</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span>
+</code></pre></div>
+<ul>
+<li>归约运算符</li>
+</ul>
+<p>&amp;（归约与）</p>
+<p>~&amp;（归约非与）</p>
+<p>|（归约或）</p>
+<p>~|（归约非或）</p>
+<p>^（归约异或）</p>
+<p>~^（归约同或）</p>
+<p>归约运算符与按位运算符的符号相同，但规约运算符都是单目运算符。它对多位操作数逐位进行操作，最终产生一个 1bit 结果。例如：</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">4</span><span class="mb">'b1010</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">A</span><span class="w">        </span><span class="c1">// 结果为 1 &amp; 0 &amp; 1 &amp; 0 = 1'b0，可用来判断变量 A 是否全 1</span>
+<span class="o">~|</span><span class="n">A</span><span class="w">       </span><span class="c1">// 结果为 ~(1 | 0 | 1 | 0) = 1'b0, 可用来判断变量 A 是否为全 0</span>
+<span class="o">^</span><span class="n">A</span><span class="w">        </span><span class="c1">// 结果为 1 ^ 0 ^ 1 ^ 0 = 1'b0</span>
+</code></pre></div>
+<ul>
+<li>条件运算符</li>
+</ul>
+<p>该类操作符只有一个，是一个三目操作符，其一般形式为</p>
+<p>条件表达式 ? 真分支 : 假分支
+计算时，如果条件表达式为真（逻辑值为 1），则运算结果为真分支的结果；如果条件表达式为假（逻辑值为 0），则计算结果为假分支的结果。条件运算符也可以嵌套使用，以进行更为复杂的逻辑选择。</p>
+<p>多路选择器实现示例：当s的值为真, d1的值赋给y; 当s的值为假， d0的值赋给y。</p>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">mux_2</span><span class="p">(</span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">d0</span><span class="p">,</span><span class="w"> </span><span class="n">d1</span><span class="p">,</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">d1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">d0</span><span class="p">;</span>
+<span class="k">endmodule</span>
+</code></pre></div>
+<p><img alt="综合后电路" src="../../images/条件表达式.png" /></p>
+<ul>
+<li>移位运算符</li>
+</ul>
+<p>&lt;&lt;（逻辑左移）</p>
+<p>&gt;&gt;（逻辑右移）</p>
+<p>&lt;&lt;&lt;（算数左移）</p>
+<p>&gt;&gt;&gt;（算数右移）</p>
+<p>在算术左移和逻辑左移时，右边低位会补 0。在逻辑右移时，左边高位会补 0；而算术右移时，左边高位会补充符号位，以保证数据缩小后值的正确性。例如：</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">8</span><span class="mb">'b1100</span><span class="n">_1101</span><span class="p">;</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="w">      </span><span class="c1">// 逻辑右移，补 0。8'b0110_0110</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="mh">2</span><span class="w">     </span><span class="c1">// 算数右移，补符号位。8'b1111_0011</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mh">2</span><span class="w">      </span><span class="c1">// 逻辑左移，补 0。8'b0011_0100</span>
+</code></pre></div>
+<ul>
+<li>拼接运算符</li>
+</ul>
+<p>拼接运算符用大括号表示，一般形式为</p>
+<div class="highlight"><pre><span></span><code>{表达式 1，表达式 2,....,表达式 N}
+</code></pre></div>
+<p>拼接运算符用于将多个操作数拼接成新的操作数。其中的表达式既可以是常数也可以是变量，但是位宽必须是确定且不可变的。</p>
+<p>与拼接操作经常一起使用的是重复操作，其一般格式是： 重复次数{表达式}  。例如</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="n">a</span><span class="p">[</span><span class="mh">0</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mh">2</span><span class="p">],</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mh">3</span><span class="p">]};</span>
+<span class="c1">//表示将 a 信号的低 4 位颠倒并赋值给高 4 位，</span>
+
+<span class="n">b</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="o">=</span><span class="p">{{</span><span class="mh">24</span><span class="p">{</span><span class="n">a</span><span class="p">[</span><span class="mh">7</span><span class="p">]}},</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]};</span>
+<span class="c1">//表示将 a 信号的低 8 位先符号扩展到 32 位后再赋值给 b 信号。</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">注意</p>
+<p>在将重复操作嵌入拼接操作时，需要用大括号把重复操作整体括起来。例如：如果将 {{24{a[7]}}, a[7:0]} 改为 {24{a[7]}, a[7:0]} 就会出现语法错误。</p>
+</div>
+<p>运算优先级如下表所示。</p>
+<p><img alt="运算符优先级" src="../../images/运算符优先级.png" /></p>
+<div class="admonition important">
+<p class="admonition-title">实验任务 2</p>
+<p>1 采用逻辑运算的assign语句实现图示的2选1多路选择器功能。</p>
+<p>2 采用条件表达式完成相同功能的2选1多路选择器。</p>
+<p><img alt="2选1多路选择器" src="../../images/2路选择器电路图.jpg" /></p>
+</div>
+<h3 id="任务-2完成-mux_2sv-代码并完成仿真验证">任务 2：完成 mux_2.sv 代码并完成仿真验证<a class="headerlink" href="index.html#任务-2完成-mux_2sv-代码并完成仿真验证" title="Permanent link">&para;</a></h3>
+<p>本任务的目标是：根据图示完成 <code>mux_2</code> 模块的端口连接，并通过 Icarus Verilog 进行功能仿真验证，最终用 GTKWave 查看时序波形。</p>
+<h4 id="1-任务要求">1. 任务要求<a class="headerlink" href="index.html#1-任务要求" title="Permanent link">&para;</a></h4>
+<p>按图示编写模块 <code>mux_2.sv</code>。2个任务的模块框架代码相同：</p>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">mux_2</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">D</span><span class="p">,</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="n">s</span><span class="p">,</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="n">y</span>
+<span class="p">);</span>
+<span class="w">    </span><span class="c1">// 请根据实验要求完成端口功能连接</span>
+<span class="k">endmodule</span>
+</code></pre></div>
+<h4 id="2-下载测试代码">2. 下载测试代码<a class="headerlink" href="index.html#2-下载测试代码" title="Permanent link">&para;</a></h4>
+<p>测试文件已准备好，可直接下载：</p>
+<ul>
+<li><a href="../code/mux_2.sv">mux_2.sv</a></li>
+<li><a href="../code/tb_mux_2.sv">tb_mux_2.sv</a></li>
+</ul>
+<h4 id="3-实验步骤">3. 实验步骤<a class="headerlink" href="index.html#3-实验步骤" title="Permanent link">&para;</a></h4>
+<h5 id="第一步完成代码编写">第一步：完成代码编写<a class="headerlink" href="index.html#第一步完成代码编写" title="Permanent link">&para;</a></h5>
+<h5 id="第二步编译源码">第二步：编译源码<a class="headerlink" href="index.html#第二步编译源码" title="Permanent link">&para;</a></h5>
+<p>打开代码所在目录：</p>
+<p>右键选择“在终端中打开”</p>
+<p>执行 Icarus Verilog 编译命令：</p>
+<div class="highlight"><pre><span></span><code>iverilog -g2012 -s tb_mux_2 -o tb_mux_2.out mux_2.sv tb_mux_2.sv
+</code></pre></div>
+<h5 id="第三步运行仿真查看结果和波形">第三步：运行仿真查看结果和波形<a class="headerlink" href="index.html#第三步运行仿真查看结果和波形" title="Permanent link">&para;</a></h5>
+<p>比较两种实现的仿真结果是否相同。</p>
+<h3 id="更多的练习">更多的练习<a class="headerlink" href="index.html#更多的练习" title="Permanent link">&para;</a></h3>
+<p>校内 verilog oj <strong>使用自己学号注册</strong> ： http://10.245.130.66/ </p>
+<ul>
+<li>
+<p>1 <a href="http://10.245.130.66/oj/problem/35">向量 http://10.245.130.66/oj/problem/35</a></p>
+</li>
+<li>
+<p>2 <a href="http://10.245.130.66/oj/problem/36">位操作 http://10.245.130.66/oj/problem/36</a></p>
+</li>
+<li>
+<p>3 <a href="http://10.245.130.66/oj/problem/37">向量拼接 http://10.245.130.66/oj/problem/37</a></p>
+</li>
+<li>
+<p>4 <a href="http://10.245.130.66/oj/problem/38">复制算子 http://10.245.130.66/oj/problem/38</a></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 数字电子技术课程组
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "toc.sticky"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
